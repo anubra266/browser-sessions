@@ -28,7 +28,7 @@ class SessionController extends Controller
         }
         $guard->logoutOtherDevices($request->password);
 
-        // $this->deleteOtherSessionRecords($request);
+        $this->deleteOtherSessionRecords($request);
 
         return redirect()->back();
     }
