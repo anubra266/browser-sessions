@@ -5,6 +5,21 @@
 
 Manage Browser Sessions in a Laravel Application
 
+## Contents
+
+-   [Features](#Features)
+-   [Installation](#installation)
+-   [Usage](#Usage)
+    -   [Get Sessions](#Get-Sessions)
+        -   [Sessions Output Format](#Sessions-Output-Format)
+-   [Testing](#Testing)
+-   [Credits](#Credits)
+-   [License](#License)
+
+## Features
+-   [x] List Browser Sessions
+-   [ ] Logout All Browser Sessions
+-   [ ] Logout Individual Browser Session
 ## Installation
 
 You can install the package via composer:
@@ -39,6 +54,8 @@ Make sure that the `Illuminate\Session\Middleware\AuthenticateSession` middlewar
 
 ## Usage
 
+### Get Sessions
+
 ```php
 # SettingsController.php
 
@@ -49,6 +66,33 @@ public function showSessions(BrowserSessions $browserSessions){
     $sessions = $browserSessions->sessions($request,'blade');
     //Pass the collection to your view
     return view('sessions', ["sessions" => $sessions->all()]);
+
+}
+```
+
+### Sessions Output Format
+
+```php
+[blade]
+[
+    'agent' => string,
+    'ip_address' => string,
+    'is_current_device' => boolean,
+    'last_active' => string,
+];
+```
+
+```js
+[js]
+{
+    'agent' :{
+        'is_desktop' : boolean,
+        'platform' : string,
+        'browser' : 'string',
+    },
+    'ip_address' : string,
+    'is_current_device' : boolean,
+    'last_active' : string,
 }
 ```
 
