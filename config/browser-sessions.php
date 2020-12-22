@@ -1,3 +1,7 @@
 <?php
 
-return [];
+return [
+    'prefix' => 'browser-sessions',
+    'middleware' => ['web'],
+    'logoutAllSessions' => 'browser.sessions.logout'
+];
