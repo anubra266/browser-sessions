@@ -13,7 +13,6 @@ Manage User Accounts' Browser Sessions in a Laravel Application.
     -   [Get Sessions](#Get-Sessions)
         -   [Backend](#Backend)
         -   [Output Format](#Output-Format)
-        -   [Frontend](#Frontend)
     -   [Logout All Sessions](#Logout-All-Sessions)
 -   [Testing](#Testing)
 -   [Credits](#Credits)
@@ -110,8 +109,9 @@ Send a Post Request to the named route `browser.sessions.logout`.
 ```
 
 **NB**:
-- You can change this named route by changing the value of the `logoutAllSessions` key in `config/browser-sessions.php`.
-- Validation errors are returned in errorBag named `logoutOtherBrowserSessions`. You can change this by editing the value of the `errorBag` key in `config/browser-sessions.php`.
+
+-   You can change this named route by changing the value of the `logoutAllSessions` key in `config/browser-sessions.php`.
+-   Validation errors are returned in errorBag named `logoutOtherBrowserSessions`. You can change this by editing the value of the `errorBag` key in `config/browser-sessions.php`.
 
 ## Testing
 
