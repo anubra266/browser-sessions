@@ -12,9 +12,6 @@ class BrowserSessionsCommand extends Command
 
     public function handle()
     {
-
-
         $this->comment('All Done!');
     }
-
 }
