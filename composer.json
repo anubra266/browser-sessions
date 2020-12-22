@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "anubra266/browser-sessions",
+    "description": "Manage Browser Sessions in a Laravel Application",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "anubra266",
+        "browser-sessions"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/anubra266/browser-sessions",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Abraham",
+            "email": "anubra266@gmail.com",
             "homepage": "https://spatie.be",
             "role": "Developer"
         }
@@ -25,13 +25,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Anubra266\\BrowserSessions\\": "src",
+            "Anubra266\\BrowserSessions\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Anubra266\\BrowserSessions\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Anubra266\\BrowserSessions\\BrowserSessionsServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "BrowserSessions": "Anubra266\\BrowserSessions\\BrowserSessionsFacade"
             }
         }
     },

@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Anubra266\BrowserSessions\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class BrowserSessionsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'browser-sessions';
 
     public $description = 'My command';
 
