@@ -20,16 +20,19 @@ class BrowserSessions
         if (config('session.driver') !== 'database') {
             return collect();
         }
+
         return collect(DB::table(config('session.table', 'sessions'))
             ->where('user_id', $request->user()->getAuthIdentifier())
             ->orderBy('last_activity', 'desc')
             ->get())->map(function ($session) use ($request, $environment) {
-            $agent = $this->createAgent($session);
+                $agent = $this->createAgent($session);
 
-            $params = [$agent, $session, $request, $environment];
-            return (object)$this->sessionList($params);
-        });
+                $params = [$agent, $session, $request, $environment];
+
+                return (object)$this->sessionList($params);
+            });
     }
+
     public function sessionList($params)
     {
         [$agent, $session, $request, $environment] = $params;
@@ -45,6 +48,7 @@ class BrowserSessions
                     'is_current_device' => $session->id === $request->session()->getId(),
                     'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
                 ];
+
                 break;
 
             default:
@@ -54,9 +58,11 @@ class BrowserSessions
                     'is_current_device' => $session->id === request()->session()->getId(),
                     'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
                 ];
+
                 break;
         }
     }
+
     /**
      * Create a new agent instance from the given session.
      *
