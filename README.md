@@ -84,23 +84,12 @@ public function showSessions(BrowserSessions $browserSessions){
 
 #### **Output Format**
 
-```php
-[blade]
-[
-    'agent' => string,
-    'ip_address' => string,
-    'is_current_device' => boolean,
-    'last_active' => string,
-];
-```
-
 ```js
-[js]
 {
     'agent' :{
         'is_desktop' : boolean,
         'platform' : string,
-        'browser' : 'string',
+        'browser' : string,
     },
     'ip_address' : string,
     'is_current_device' : boolean,
@@ -108,60 +97,12 @@ public function showSessions(BrowserSessions $browserSessions){
 }
 ```
 
-#### **Frontend**
-
-**Blade**
-
-```php
-@if (count($sessions) > 0)
-<div>
-    <!-- Other Browser Sessions -->
-    @foreach ($sessions as $session)
-    <li>
-        <div>
-            @if ($session->agent->isDesktop())
-            Desktop
-            @else
-            Mobile
-            @endif
-        </div>
-
-        <div>
-            <div>
-                {{ $session->agent->platform() }} - {{ $session->agent->browser() }}
-            </div>
-
-            <div>
-                <div>
-                    {{ $session->ip_address }},
-
-                    @if ($session->is_current_device)
-                    <span>{{ __('This device') }}</span>
-                    @else
-                    {{ __('Last active') }} {{ $session->last_active }}
-                    @endif
-                </div>
-            </div>
-        </div>
-    </li>
-    @endforeach
-</div>
-@endif
-```
-
-**JS**
-
-Use your native `v-for` in vue and `.map()` in react.
-
 ## Logout All Sessions
 
 Send a Post Request to the named route `browser.sessions.logout`.
 
 ```html
-<form
-    action="{{route('browser.sessions.logout')}}"
-    method="post"
->
+<form action="{{route('browser.sessions.logout')}}" method="post">
     @csrf
     <input type="password" placeholder="Enter your password" name="password" />
     <button>Logout All Devices</button>

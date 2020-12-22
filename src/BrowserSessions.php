@@ -15,7 +15,7 @@ class BrowserSessions
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
-    public function sessions(Request $request, $environment)
+    public function sessions(Request $request)
     {
         if (config('session.driver') !== 'database') {
             return collect();
@@ -24,45 +24,25 @@ class BrowserSessions
         return collect(DB::table(config('session.table', 'sessions'))
             ->where('user_id', $request->user()->getAuthIdentifier())
             ->orderBy('last_activity', 'desc')
-            ->get())->map(function ($session) use ($request, $environment) {
-            $agent = $this->createAgent($session);
-
-            $params = [$agent, $session, $request, $environment];
-
-            return (object)$this->sessionList($params);
+            ->get())->map(function ($session) {
+            return (object)$this->sessionList($session);
         });
     }
 
-    public function sessionList($params)
+    public function sessionList($session)
     {
-        [$agent, $session, $request, $environment] = $params;
-        switch ($environment) {
-            case 'js':
-                return  [
-                    'key' => $session->id,
-                    'agent' => [
-                        'is_desktop' => $agent->isDesktop(),
-                        'platform' => $agent->platform(),
-                        'browser' => $agent->browser(),
-                    ],
-                    'ip_address' => $session->ip_address,
-                    'is_current_device' => $session->id === $request->session()->getId(),
-                    'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
-                ];
-
-                break;
-
-            default:
-                return [
-                    'key' => $session->id,
-                    'agent' => $this->createAgent($session),
-                    'ip_address' => $session->ip_address,
-                    'is_current_device' => $session->id === request()->session()->getId(),
-                    'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
-                ];
-
-                break;
-        }
+        $agent = $this->createAgent($session);
+        return  [
+            'key' => $session->id,
+            'agent' => (object)[
+                'is_desktop' => $agent->isDesktop(),
+                'platform' => $agent->platform(),
+                'browser' => $agent->browser(),
+            ],
+            'ip_address' => $session->ip_address,
+            'is_current_device' => $session->id === request()->session()->getId(),
+            'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
+        ];
     }
 
     /**
