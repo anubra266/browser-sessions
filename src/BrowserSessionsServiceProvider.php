@@ -2,8 +2,8 @@
 
 namespace Anubra266\BrowserSessions;
 
-use Illuminate\Support\ServiceProvider;
 use Anubra266\BrowserSessions\Commands\BrowserSessionsCommand;
+use Illuminate\Support\ServiceProvider;
 
 class BrowserSessionsServiceProvider extends ServiceProvider
 {
