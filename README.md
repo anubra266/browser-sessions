@@ -14,14 +14,16 @@ Manage Browser Sessions in a Laravel Application
         -   [Backend](#Backend)
         -   [Output Format](#Output-Format)
         -   [Frontend](#Frontend)
+    -   [Logout All Sessions](#Logout-All-Sessions)
 -   [Testing](#Testing)
 -   [Credits](#Credits)
 -   [License](#License)
 
 ## Features
+
 -   [x] List Browser Sessions
 -   [ ] Logout All Browser Sessions
--   [ ] Logout Individual Browser Session
+
 ## Installation
 
 You can install the package via composer:
@@ -54,11 +56,18 @@ Make sure that the `Illuminate\Session\Middleware\AuthenticateSession` middlewar
 ],
 ```
 
+You can publish the config file with:
+
+```
+php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
+```
+
 ## Usage
 
 ### Get Sessions
 
-#### __Backend__
+#### **Backend**
+
 ```php
 # SettingsController.php
 
@@ -73,7 +82,7 @@ public function showSessions(BrowserSessions $browserSessions){
 }
 ```
 
-#### __Output Format__
+#### **Output Format**
 
 ```php
 [blade]
@@ -98,8 +107,11 @@ public function showSessions(BrowserSessions $browserSessions){
     'last_active' : string,
 }
 ```
-#### __Frontend__
-__Blade__
+
+#### **Frontend**
+
+**Blade**
+
 ```php
 @if (count($sessions) > 0)
 <div>
@@ -137,10 +149,22 @@ __Blade__
 @endif
 ```
 
-__JS__
+**JS**
 
-Use your native ```v-for``` in vue and ```.map()``` in react.
+Use your native `v-for` in vue and `.map()` in react.
 
+## Logout All Sessions
+
+Send a Post Request to the named route `browser.sessions.logout`.
+
+```html
+<form action="{{route('browser.sessions.logout')}}" method="post">
+    @csrf
+    <button>Logout All Sessions</button>
+</form>
+```
+
+**NB**: You can change this named route by changing the value of the `logoutAllSessions` key in `config/browser-sessions.php`.
 
 ## Testing
 
