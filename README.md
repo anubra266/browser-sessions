@@ -109,7 +109,9 @@ Send a Post Request to the named route `browser.sessions.logout`.
 </form>
 ```
 
-**NB**: You can change this named route by changing the value of the `logoutAllSessions` key in `config/browser-sessions.php`.
+**NB**:
+- You can change this named route by changing the value of the `logoutAllSessions` key in `config/browser-sessions.php`.
+- Validation errors are returned in errorBag named `logoutOtherBrowserSessions`. You can change this by editing the value of the `errorBag` key in `config/browser-sessions.php`.
 
 ## Testing
 
