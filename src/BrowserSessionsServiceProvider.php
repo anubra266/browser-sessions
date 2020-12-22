@@ -17,14 +17,6 @@ class BrowserSessionsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../resources/views' => base_path('resources/views/vendor/browser-sessions'),
             ], 'views');
-
-            $migrationFileName = 'create_browser_sessions_table.php';
-            if (! $this->migrationFileExists($migrationFileName)) {
-                $this->publishes([
-                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
-                ], 'migrations');
-            }
-
             $this->commands([
                 BrowserSessionsCommand::class,
             ]);
@@ -36,17 +28,8 @@ class BrowserSessionsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/browser-sessions.php', 'browser-sessions');
-    }
-
-    public static function migrationFileExists(string $migrationFileName): bool
-    {
-        $len = strlen($migrationFileName);
-        foreach (glob(database_path("migrations/*.php")) as $filename) {
-            if ((substr($filename, -$len) === $migrationFileName)) {
-                return true;
-            }
-        }
-
-        return false;
+        $this->app->bind('browser-sessions', function ($app) {
+            return new BrowserSessions();
+        });
     }
 }

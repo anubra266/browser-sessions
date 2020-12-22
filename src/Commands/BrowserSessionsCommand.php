@@ -6,12 +6,15 @@ use Illuminate\Console\Command;
 
 class BrowserSessionsCommand extends Command
 {
-    public $signature = 'browser-sessions';
+    public $signature = 'browser-sessions:install';
 
-    public $description = 'My command';
+    public $description = 'Setup Browser Sessions Package';
 
     public function handle()
     {
-        $this->comment('All done');
+
+
+        $this->comment('All Done!');
     }
+
 }
