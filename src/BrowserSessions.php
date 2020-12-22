@@ -25,12 +25,12 @@ class BrowserSessions
             ->where('user_id', $request->user()->getAuthIdentifier())
             ->orderBy('last_activity', 'desc')
             ->get())->map(function ($session) use ($request, $environment) {
-                $agent = $this->createAgent($session);
+            $agent = $this->createAgent($session);
 
-                $params = [$agent, $session, $request, $environment];
+            $params = [$agent, $session, $request, $environment];
 
-                return (object)$this->sessionList($params);
-            });
+            return (object)$this->sessionList($params);
+        });
     }
 
     public function sessionList($params)
@@ -39,6 +39,7 @@ class BrowserSessions
         switch ($environment) {
             case 'js':
                 return  [
+                    'key' => $session->id,
                     'agent' => [
                         'is_desktop' => $agent->isDesktop(),
                         'platform' => $agent->platform(),
@@ -53,6 +54,7 @@ class BrowserSessions
 
             default:
                 return [
+                    'key' => $session->id,
                     'agent' => $this->createAgent($session),
                     'ip_address' => $session->ip_address,
                     'is_current_device' => $session->id === request()->session()->getId(),
