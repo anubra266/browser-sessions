@@ -2,9 +2,9 @@
 
 namespace Anubra266\BrowserSessions\Tests;
 
+use Anubra266\BrowserSessions\BrowserSessionsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Anubra266\BrowserSessions\BrowserSessionsServiceProvider;
 
 class TestCase extends Orchestra
 {
