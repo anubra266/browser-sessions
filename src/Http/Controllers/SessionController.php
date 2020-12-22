@@ -17,19 +17,18 @@ class SessionController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
-     * @return void
+     * @return \Illuminate\Http\Client\Response
      */
-    public function sessionsLogout(Request $request, StatefulGuard $guard)
+    public function destroy(Request $request, StatefulGuard $guard)
     {
         if (!Hash::check($request->password, $request->user()->password)) {
             throw ValidationException::withMessages([
                 'password' => [__('This password does not match our records.')],
-            ])->errorBag('logoutOtherBrowserSessions');
+            ])->errorBag(config('browser-sessions.errorBag'));
         }
-
         $guard->logoutOtherDevices($request->password);
 
-        $this->deleteOtherSessionRecords($request);
+        // $this->deleteOtherSessionRecords($request);
 
         return redirect()->back();
     }
