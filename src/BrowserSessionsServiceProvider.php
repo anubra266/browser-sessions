@@ -15,12 +15,12 @@ class BrowserSessionsServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/browser-sessions.php' => config_path('browser-sessions.php'),
             ], 'config');
 
-            $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/browser-sessions'),
-            ], 'views');
-            $this->commands([
-                BrowserSessionsCommand::class,
-            ]);
+            // $this->publishes([
+            //     __DIR__ . '/../resources/views' => base_path('resources/views/vendor/browser-sessions'),
+            // ], 'views');
+            // $this->commands([
+            //     BrowserSessionsCommand::class,
+            // ]);
         }
         $this->registerRoutes();
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'browser-sessions');
