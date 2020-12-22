@@ -11,7 +11,9 @@ Manage Browser Sessions in a Laravel Application
 -   [Installation](#installation)
 -   [Usage](#Usage)
     -   [Get Sessions](#Get-Sessions)
-        -   [Sessions Output Format](#Sessions-Output-Format)
+        -   [Backend](#Backend)
+        -   [Output Format](#Output-Format)
+        -   [Frontend](#Frontend)
 -   [Testing](#Testing)
 -   [Credits](#Credits)
 -   [License](#License)
@@ -56,6 +58,7 @@ Make sure that the `Illuminate\Session\Middleware\AuthenticateSession` middlewar
 
 ### Get Sessions
 
+#### __Backend__
 ```php
 # SettingsController.php
 
@@ -70,7 +73,7 @@ public function showSessions(BrowserSessions $browserSessions){
 }
 ```
 
-### Sessions Output Format
+#### __Output Format__
 
 ```php
 [blade]
@@ -95,6 +98,49 @@ public function showSessions(BrowserSessions $browserSessions){
     'last_active' : string,
 }
 ```
+#### __Frontend__
+__Blade__
+```php
+@if (count($sessions) > 0)
+<div>
+    <!-- Other Browser Sessions -->
+    @foreach ($sessions as $session)
+    <li>
+        <div>
+            @if ($session->agent->isDesktop())
+            Desktop
+            @else
+            Mobile
+            @endif
+        </div>
+
+        <div>
+            <div>
+                {{ $session->agent->platform() }} - {{ $session->agent->browser() }}
+            </div>
+
+            <div>
+                <div>
+                    {{ $session->ip_address }},
+
+                    @if ($session->is_current_device)
+                    <span>{{ __('This device') }}</span>
+                    @else
+                    {{ __('Last active') }} {{ $session->last_active }}
+                    @endif
+                </div>
+            </div>
+        </div>
+    </li>
+    @endforeach
+</div>
+@endif
+```
+
+__JS__
+
+Use your native ```v-for``` in vue and ```.map()``` in react.
+
 
 ## Testing
 
