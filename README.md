@@ -22,7 +22,7 @@ Manage Browser Sessions in a Laravel Application
 ## Features
 
 -   [x] List Browser Sessions
--   [ ] Logout All Browser Sessions
+-   [x] Logout All Browser Sessions
 
 ## Installation
 
@@ -158,9 +158,13 @@ Use your native `v-for` in vue and `.map()` in react.
 Send a Post Request to the named route `browser.sessions.logout`.
 
 ```html
-<form action="{{route('browser.sessions.logout')}}" method="post">
+<form
+    action="{{route('browser.sessions.logout')}}"
+    method="post"
+>
     @csrf
-    <button>Logout All Sessions</button>
+    <input type="password" placeholder="Enter your password" name="password" />
+    <button>Logout All Devices</button>
 </form>
 ```
 
