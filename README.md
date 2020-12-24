@@ -70,9 +70,8 @@ php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" 
 ```php
 # SettingsController.php
 
-// Bind the Package Facade into the method
+//Get a collection of sessions
 public function showSessions(){
-    //Get a collection of sessions
     // This method accepts the request instance
     $sessions = BrowserSessions::sessions(request());
     //Pass the collection to your view
