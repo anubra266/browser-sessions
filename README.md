@@ -79,7 +79,7 @@ php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" 
 //Get a collection of sessions
 public function showSessions(){
     // This method accepts the request instance
-    $sessions = BrowserSessions::sessions(request());
+    $sessions = BrowserSessions::collect(request());
     //Pass the collection to your view
     return view('sessions', ["sessions" => $sessions->all()]);
 
