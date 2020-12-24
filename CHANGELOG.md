@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `browser-sessions` will be documented in this file.
+Package Changes
 
 ## 1.0.0 - 2020-12-23
 
