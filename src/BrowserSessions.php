@@ -15,7 +15,7 @@ class BrowserSessions
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
-    public static function sessions(Request $request)
+    public static function collect(Request $request)
     {
         if (config('session.driver') !== 'database') {
             return collect();
