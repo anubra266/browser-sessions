@@ -1,8 +1,14 @@
 # Browser Sessions
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/anubra266/browser-sessions.svg?style=flat-square)](https://packagist.org/packages/anubra266/browser-sessions)
-[![Total Downloads](https://img.shields.io/packagist/dt/anubra266/browser-sessions.svg?style=flat-square)](https://packagist.org/packages/anubra266/browser-sessions)
+<div align="center">
 
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/anubra266/browser-sessions/Tests?style=for-the-badge)](https://github.com/anubra266/browser-sessions/actions?query=workflow%3ATests)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/anubra266/browser-sessions.svg?style=for-the-badge&logo=packagist)](https://packagist.org/packages/anubra266/browser-sessions)
+[![License](https://img.shields.io/github/license/anubra266/browser-sessions.svg?style=for-the-badge)](https://github.com/anubra266/browser-sessions/blob/master/LICENSE)
+[![Total Downloads](https://img.shields.io/packagist/dt/anubra266/browser-sessions.svg?style=for-the-badge)](https://packagist.org/packages/anubra266/browser-sessions)
+[![Author](https://img.shields.io/badge/author-@anubra266-blue.svg?style=for-the-badge)](https://github.com/anubra266)
+
+</div>
 Manage User Accounts' Browser Sessions in a Laravel Application.
 
 ## Contents
