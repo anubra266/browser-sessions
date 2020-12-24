@@ -33,13 +33,13 @@ composer require anubra266/browser-sessions
 
 Edit `config/session.php` and change the Driver
 
-```
+```php
 'driver' => 'database'
 ```
 
 Create Session Migration and Migrate
 
-```
+```bash
 php artisan session:table
 
 php artisan migrate
@@ -47,7 +47,7 @@ php artisan migrate
 
 Make sure that the `Illuminate\Session\Middleware\AuthenticateSession` middleware is present and un-commented in your `app/Http/Kernel.php class` web middleware group:
 
-```
+```php
 'web' => [
     // ...
     \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -57,7 +57,7 @@ Make sure that the `Illuminate\Session\Middleware\AuthenticateSession` middlewar
 
 You can publish the config file with:
 
-```
+```bash
 php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
 ```
 
@@ -71,10 +71,10 @@ php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" 
 # SettingsController.php
 
 // Bind the Package Facade into the method
-public function showSessions(BrowserSessions $browserSessions){
+public function showSessions(){
     //Get a collection of sessions
-    // This method accepts the request instance and your rendering environment. i.e.  "js" or "blade"
-    $sessions = $browserSessions->sessions($request,'blade');
+    // This method accepts the request instance
+    $sessions = BrowserSessions::sessions(request());
     //Pass the collection to your view
     return view('sessions', ["sessions" => $sessions->all()]);
 
