@@ -64,7 +64,7 @@ Make sure that the `Illuminate\Session\Middleware\AuthenticateSession` middlewar
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Anubra266\BrowserSessions\BrowserSessionsServiceProvider" --tag="config"
 ```
 
 ## Usage
